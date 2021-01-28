@@ -7,15 +7,27 @@ const GameBoard = ({ started }) => {
   const [none, setNone] = useState(true)
   const [score, setScore] = useState(0)
   const [teams, setTeams] = useState([])
-  const [data, setData] = useState(eplTeams)
+  const [data, setData] = useState([])
+  const [won, setWon] = useState(false)
 
   const randomTeams = () => {
-    var arr = []
-    while (arr.length < 8) {
-      var r = Math.floor(Math.random() * 100) + 1
-      if (arr.indexOf(r) === -1) arr.push(r)
+    const arr = []
+    while (arr.length < 4) {
+      let random = Math.floor(Math.random() * 20)
+      if (arr.indexOf(random) === -1) arr.push(random)
     }
+    const chosenTeams = []
+    arr.forEach(index => {
+      eplTeams.forEach((team, i) => {
+        if (index === i) chosenTeams.push(team)
+      })
+    })
+    setData(chosenTeams)
+    console.log(arr)
   }
+  useEffect(() => {
+    randomTeams()
+  }, [])
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,6 +36,11 @@ const GameBoard = ({ started }) => {
   }, [started])
 
   const handleClick = ({ name }) => {
+    if (score === 20) {
+      setWon(true)
+      return
+    }
+    randomTeams()
     if (teams.find(team => team === name)) {
       console.log('Hello ', name)
       setScore(0)
@@ -42,10 +59,10 @@ const GameBoard = ({ started }) => {
     <section
       className={`gameboard ${none && ' hidden'} ${!started && ' none'}`}
     >
+      <div className='score'>
+        <h2>{won ? 'You won!' : `Score: ${score}`}</h2>
+      </div>
       <div className='container'>
-        <div className='score'>
-          <h3>Score: {score}</h3>
-        </div>
         {data.map(team => (
           <ClubLogo team={team} key={uuidv4()} handleClick={handleClick} />
         ))}

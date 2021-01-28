@@ -52,13 +52,18 @@ main {
     top: 0;
     transform: translateX(-50%);
     transition: 0.5s ease-in-out 0.5s;
+    width: 1200px;
+    max-width: 95%;
+
     .score {
+      width: 100%;
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      // left: 50%;
+      // transform: translateX(-50%);
       h2 {
         font-size: 4rem;
         font-weight: 600;
+        text-align: center;
       }
     }
     .container {
@@ -71,18 +76,34 @@ main {
       align-items: center;
       grid-gap: 1rem;
 
+      @media (max-width: 1100px) {
+        max-width: 700px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+        width: 400px;
+      }
+
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+        width: 300px;
+      }
       .logo {
+        width: 100%;
         display: flex;
         justify-content: center;
         padding: 1rem;
         cursor: pointer;
         transition: 0.2s ease-in-out;
+        border-radius: 10px;
         &:hover {
           background: #c27ac9;
-          border-radius: 10px;
         }
         img {
-          width: 80%;
+          width: 100%;
+          object-fit: cover;
         }
       }
     }

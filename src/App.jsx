@@ -1,5 +1,6 @@
 import Header from './containers/Header'
 import Instructions from './containers/Instructions'
+import GameBoard from './containers/GameBoard'
 import { useState } from 'react'
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Header />
       <main>
         <Instructions started={started} setStarted={setStarted} />
+        <GameBoard started={started} />
       </main>
     </>
   )

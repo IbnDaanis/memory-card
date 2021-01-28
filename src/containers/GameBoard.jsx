@@ -12,8 +12,16 @@ const GameBoard = ({ started }) => {
 
   const randomTeams = () => {
     const arr = []
+    const unpickedTeams = []
+    eplTeams.forEach((team, index) => {
+      if (teams.indexOf(team.name) === -1) {
+        unpickedTeams.push(index)
+      }
+    })
+    let random = Math.floor(Math.random() * unpickedTeams.length)
+    arr.push(random)
     while (arr.length < 4) {
-      let random = Math.floor(Math.random() * 20)
+      let random = Math.floor(Math.random() * 8)
       if (arr.indexOf(random) === -1) arr.push(random)
     }
     const chosenTeams = []
@@ -23,10 +31,10 @@ const GameBoard = ({ started }) => {
       })
     })
     setData(chosenTeams)
-    console.log(arr)
   }
   useEffect(() => {
     randomTeams()
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -42,7 +50,6 @@ const GameBoard = ({ started }) => {
     }
     randomTeams()
     if (teams.find(team => team === name)) {
-      console.log('Hello ', name)
       setScore(0)
       setTeams([])
     } else {
@@ -50,10 +57,6 @@ const GameBoard = ({ started }) => {
       setScore(score => score + 1)
     }
   }
-
-  useEffect(() => {
-    console.log({ teams, score })
-  }, [teams, score])
 
   return (
     <section

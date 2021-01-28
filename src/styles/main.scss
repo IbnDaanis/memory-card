@@ -1,0 +1,56 @@
+main {
+  margin-top: 3rem;
+  .instructions {
+    transition: 0.5s ease-in-out;
+    .container {
+      width: 1200px;
+      max-width: 95%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .title {
+        text-align: center;
+        font-size: 4rem;
+        @media (max-width: 420px) {
+          font-size: 3rem;
+        }
+      }
+      ol {
+        width: 500px;
+        max-width: 95%;
+        margin: 2rem auto;
+        transform: translateX(1rem);
+        li {
+          padding: 0.2rem 0;
+          font-weight: 500;
+          font-size: 1.3rem;
+        }
+      }
+      button {
+        font-size: 2rem;
+        font-weight: 700;
+        display: block;
+        padding: 0.5rem 1.5rem;
+        border-radius: 10px;
+        background: #e90152;
+        border: 3px solid #e90152;
+        color: white;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          color: #e90152;
+          background: white;
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.none {
+  display: none;
+}

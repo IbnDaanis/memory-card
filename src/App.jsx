@@ -1,14 +1,16 @@
-import React from 'react'
-import { eplTeams } from './data/epl-teams'
-import { v4 as uuidv4 } from 'uuid'
+import Header from './containers/Header'
+import Instructions from './containers/Instructions'
+import { useState } from 'react'
 
 const App = () => {
+  const [started, setStarted] = useState(false)
   return (
-    <div>
-      {eplTeams.map(team => (
-        <img src={team.path} alt={team.name} key={uuidv4()} />
-      ))}
-    </div>
+    <>
+      <Header />
+      <main>
+        <Instructions started={started} setStarted={setStarted} />
+      </main>
+    </>
   )
 }
 

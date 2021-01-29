@@ -1,6 +1,6 @@
 # Memory Card
 
-**Check out** the app [here]()
+**Check out** the app [here](https://ibndaanis.github.io/memory-card/)
 
 ### Features of this app:
 
